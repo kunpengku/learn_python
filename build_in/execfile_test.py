@@ -1,0 +1,2 @@
+
+execfile('a.txt')
