@@ -1,0 +1,23 @@
+. test_1.py::test_func
+F test_2.py::TestClass::()::test_1
+ self = <test_2.TestClass instance at 0x7f1bf480c4d0>
+ 
+     def test_1(self):
+     
+         x = 'tis'
+     
+ >       assert 'j' in x
+ E       AssertionError: assert 'j' in 'tis'
+ 
+ test_2.py:10: AssertionError
+F test_2.py::TestClass::()::test_2
+ self = <test_2.TestClass instance at 0x7f1bf4853638>
+ 
+     def test_2(self):
+     
+         x = 'tis'
+     
+ >       assert 'j' in x
+ E       AssertionError: assert 'j' in 'tis'
+ 
+ test_2.py:16: AssertionError
