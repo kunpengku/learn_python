@@ -1,30 +1,85 @@
+#coding:utf8
+
+#   无参数装饰器 – 包装无参数函数
+def decorator(func):
+    print 'hello in deco'
+
+    return func
+
+@decorator
+def foo():
+    print 'foo'
+    pass
 
 
-dry_run=True
-import time
+#foo()
 
-def dry_run_deco(method):
-    def m_dry_run(*arg, **k):
-        if dry_run is True:
-            print 'fake method'
-            print 'sleep'
-            time.sleep(0.2)
-            print 'return the same'
-        else:
-            method(*arg, **k)
+
+
+# 无参数装饰器 – 包装带参数函数
+
+
+def decorator_func_args(func):
+    def handle_args(*args, **kwargs):
+        print 'start'
+
+        func(*args, **kwargs)
+        print 'end'
+
+
+    return handle_args
+
+@decorator_func_args
+def foo2(a, b=2):
+    print a, b
+
+
+#foo2(3)
+
+
+# 带参数装饰器 – 包装无参数函数
+
+
+def decorator_with_params(arg_of_decorator):
+    print arg_of_decorator
+
+    def newDecorator(func):
         
+        print func
+        return func
 
 
-    return m_dry_run
+    return newDecorator
+
+@decorator_with_params("deco_args")
+def foo3():
+    print 'foo3'
+    pass
+
+#foo3()
 
 
-@dry_run_deco
-def send(msg):
-    print 'send msg', msg
+
+# 带参数装饰器– 包装带参数函数
+
+def decorator_with_param_and_func_args(arg_of_deco):
+    print arg_of_deco
+    def decorator(func):
+
+        def wapper(*args, **kwargs):
+            print 'start'
+            func(*args, **kwargs)
+            print 'end'
+
+        return wapper
+
+    return decorator
 
 
+@decorator_with_param_and_func_args("last")
+def foo4(a, b=2):
+    print a, b
+
+foo4(3)
 
 
-
-
-send('nihao')
